@@ -38,6 +38,7 @@ function salesController($scope, $http, $rootScope, $location, $window) {
                 swal('Success!', response.data['message'], 'success');
                 vm.productsCart = [];
                 vm.saleCartModel.id_sale = 0;
+                getSales();
                 $('#sale_id').prop('disabled', false)
          });
     }
