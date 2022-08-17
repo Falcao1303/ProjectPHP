@@ -8,7 +8,8 @@ require_once "controllers/SalesController.php";
 
 //views routes
 route('/', function () {
-    include('view/home.php');
+    $vendas = new SalesController();
+    $vendas->show();
 });
 
 route('/sales', function () {
@@ -40,7 +41,6 @@ route('/products/getSales', function () {
 
 //crud products
 if(isset($_GET['product'])){
-    echo"caiu aqui";
     $product_cod = $_GET['cod'];
     $description = $_GET['product'];
     $price = $_GET['price'];

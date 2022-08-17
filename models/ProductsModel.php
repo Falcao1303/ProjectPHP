@@ -30,7 +30,7 @@ class ProductsModel extends DBConnection
     public function save($product_cod, $description, $price, $amount, $type, $taxes)
     {
         $sql = "INSERT INTO products (cod,product, price, amount, taxes,type_product)
-         VALUES ($product_cod, '$description', $price::money, $amount, $taxes::money,'$type')";
+         VALUES ($product_cod, '$description', '$price', $amount, '$taxes','$type')";
         $result = pg_query($sql);
          return $result;
     }

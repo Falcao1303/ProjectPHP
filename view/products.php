@@ -72,7 +72,7 @@
             </div>
 
             <div class="col-md-3 offset-md-3 " style="margin-left:20px; width:30%">
-              <label for="price" class="form-label">Product</label>
+              <label for="price" class="form-label">Price</label>
               <div class="input-group has-validation">
                 <input type="text" class="form-control" ng-model="productModel.price" id="price" placeholder="0.00" required>
               </div>
