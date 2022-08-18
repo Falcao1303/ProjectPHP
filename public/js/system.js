@@ -33,7 +33,6 @@ function systemController($scope, $http, $rootScope, $location, $window) {
     function registerProduct(){
         const params = vm.productModel;
         params.save = true;
-        console.log("params",params);
         vm.registerProd = $http({
             method: 'GET',
             url: '/products/add',
