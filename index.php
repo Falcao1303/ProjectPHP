@@ -2,7 +2,6 @@
 require_once "config/Request.php";
 require_once "lib/removeAcento.php";
 require_once "controllers/ProductsController.php";
-require_once "controllers/TiposController.php";
 require_once "controllers/SalesController.php";
 
 
@@ -34,10 +33,10 @@ route('/products/getSales', function () {
 if(isset($_GET['product'])){
     
     $product_cod = $_GET['cod'];
-    $description = $_GET['product']; //$_GET['product'];
+    $description = $_GET['product'];
     $price = $_GET['price'];
     $amount = $_GET['amount'];
-    $type = $_GET['type_product'];  // $_GET['type_product'];
+    $type = $_GET['type_product'];
     $taxes = $_GET['taxes'];
 
 
