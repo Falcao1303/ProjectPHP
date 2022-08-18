@@ -129,5 +129,5 @@ if(isset($_GET['id_sale'])){
 
 $action = $_SERVER['REQUEST_URI'];
 dispatch($action, function(){
-    "erro";
+   echo "erro";
 });
