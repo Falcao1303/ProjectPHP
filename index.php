@@ -18,16 +18,6 @@ route('/sales', function () {
     $vendas->show();
 });
 
-route('/tipos', function () {
-    $tipos = new TiposController();
-    $tipos->show();
-});
-
-route('/tipos/add', function () {
-    $tipos = new TiposController();
-    $tipos->save();
-});
-
 route('/products', function () {
     $produtos = new ProductsController();
     $produtos->show();
