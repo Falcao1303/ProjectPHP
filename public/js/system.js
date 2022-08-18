@@ -41,7 +41,7 @@ function systemController($scope, $http, $rootScope, $location, $window) {
         }).then(function successCallback(response){
             if(response.data.SUCCESS){
             swal("Success!","Product registered", "success");
-            // iniciarController();
+            iniciarController();
             }else{
                 swal("Error!","Product not registered", "error");
             }
