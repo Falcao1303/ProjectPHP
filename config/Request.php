@@ -30,6 +30,7 @@ function dispatch($action, callable $callback)
     global $routes;
     $action = trim($action, '/');
     $action = str_replace('+', ' ', $action);
+    $action = urldecode($action);
     $callback = $routes[$action];
 
     echo call_user_func($callback);
