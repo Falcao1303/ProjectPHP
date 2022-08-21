@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-require_once("config/Helper.php");
 require_once "./models/ProductsModel.php";
 require_once("./models/SalesModel.php");
 

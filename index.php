@@ -1,6 +1,7 @@
 <?php
+
+
 require_once "config/Request.php";
-require_once "lib/removeAcento.php";
 require_once "controllers/ProductsController.php";
 require_once "controllers/SalesController.php";
 
