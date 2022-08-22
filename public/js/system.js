@@ -32,6 +32,10 @@ function systemController($scope, $http, $rootScope, $location, $window) {
 
     function registerProduct(){
         const params = vm.productModel;
+        if(params.cod == '' || params.price == '' || params.amount == '' || params.type_product == '' || params.taxes == ''){
+            swal("Erro!","Preencha todos os campos", "error");
+            return;
+        }
         params.save = true;
         vm.registerProd = $http({
             method: 'GET',
@@ -39,10 +43,10 @@ function systemController($scope, $http, $rootScope, $location, $window) {
             params: params
         }).then(function successCallback(response){
             if(response.data.SUCCESS){
-            swal("Success!","Product registered", "success");
+            swal("Successo!","Product registrado", "success");
             iniciarController();
             }else{
-                swal("Error!","Product not registered", "error");
+                swal("Erro!","Product não registrado", "error");
             }
         });
     }

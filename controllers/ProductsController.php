@@ -1,15 +1,17 @@
 <?php
 
 require_once "./models/ProductsModel.php";
+require_once "./Lib/operacoes.php";
 
 class ProductsController
 {
     public $products;
+    public $operacoes;
 
     public function __construct() 
     {
         $this->products = new ProductsModel();
-        
+        $this->operacoes = new Lib_Operacoes();
     }
 
     public function show()
@@ -22,15 +24,15 @@ class ProductsController
         try{
             $result = $this->products->getProducts();
             foreach ($result as $key => $value) {
-                $total_price = ['total_price' => floatval(str_replace('R$','',$value['price'])) * (int)$value['amount']];
-                $total_taxes = ['total_taxes' => floatval(str_replace('R$','',$value['taxes'])) * (int)$value['amount']];
-                $total_price['total_price'] =  'R$ '.number_format($total_price['total_price'], 2, ',', '.');
-                $total_taxes['total_taxes'] =  'R$ '.number_format($total_taxes['total_taxes'], 2, ',', '.');
+                $total_price = ['total_price' => $this->operacoes->convertToFloat($value['price']) * (int)$value['amount']];
+                $total_taxes = ['total_taxes' => $this->operacoes->convertToFloat($value['taxes']) * (int)$value['amount']];
+                $total_price['total_price'] =  $this->operacoes->convertToMoney($total_price['total_price']);
+                $total_taxes['total_taxes'] =  $this->operacoes->convertToMoney($total_taxes['total_taxes']);
                 $result[$key] = array_merge($value, $total_price,$total_taxes);
             }
-            echo json_encode(array('SUCCESS'=> TRUE,'PRODUCTS' => $result));
+            echo json_encode(array('SUCCESS'=> TRUE,'PRODUCTS' => $result,'STATUS' => http_response_code(200)));
         }catch(Exception $e){
-            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage()));
+            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage(),'STATUS' => http_response_code(404)));
         }
     }
 
@@ -45,7 +47,7 @@ class ProductsController
             }
             echo json_encode(array('SUCCESS'=> TRUE,'PRODUCT' => $result));
         }catch(Exception $e){
-            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage()));
+            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage(),'STATUS' => http_response_code(404)));
         }
 
     }
@@ -60,9 +62,9 @@ class ProductsController
             $type = (string)$_GET['type_product'];
             $taxes = $_GET['taxes'];
             $this->products->update($id,$product_cod, $description, $price, $amount, $type, $taxes);
-            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'Product updated successfully'));
+            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'Produto atualizado com sucesso','STATUS' => http_response_code(204)));
         }catch(Exception $e){
-            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage()));
+            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage(),'STATUS' => http_response_code(400)));
         }
 
     }
@@ -77,9 +79,9 @@ class ProductsController
             $type = (string)$_GET['type_product'];
             $taxes = 'R$'.$_GET['taxes'];
             $products = $this->products->save($product_cod, $description, $price, $amount, $type, $taxes);
-            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'Registered!'));
+            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'Registrado!','STATUS' => http_response_code(201)));
         }catch(Exception $e){
-            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage()));
+            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage(),'STATUS' => http_response_code(400)));
         }
 
     }
@@ -90,9 +92,9 @@ class ProductsController
         try{
             $id = $_GET['cod'];
             $this->products->deleteProduct($id);
-            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'PRODUCT EXCLUDED!'));
+            echo json_encode(array('SUCCESS'=> TRUE,'MESSAGE' => 'Produto Excluído!','STATUS' => http_response_code(204)));
         }catch(Exception $e){
-            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage()));
+            echo json_encode(array('SUCCESS'=> FALSE,'MESSAGE' => $e->getMessage(),'STATUS' => http_response_code(400)));
         }
 
     }

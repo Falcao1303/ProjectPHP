@@ -58,8 +58,8 @@
   <main >
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../assets/img/cart.png" alt="" width="100" height="100">
-      <h2>Products Register</h2>
-      <p class="lead">Welcome to register system, below you can register the product,price and amount</p>
+      <h2>Registro de Produtos</h2>
+      <p class="lead">Bem-vindo ao Registro de Produtos!</p>
     </div>
 
     <div class="row text-center">
@@ -67,42 +67,42 @@
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-md-2 offset-md-3 ">
-              <label for="product" class="form-label">Product Code</label>
-              <input type="text" class="form-control" ng-model="productModel.cod" id="product" placeholder="Code" value="" required>
+              <label for="product" class="form-label">Código do Produto</label>
+              <input type="text" class="form-control" ng-model="productModel.cod" id="product" placeholder="Codigo" value="" required>
             </div>
 
             <div class="col-md-3 offset-md-3 " style="margin-left:20px; width:30%">
-              <label for="price" class="form-label">Price</label>
+              <label for="price" class="form-label">Preço</label>
               <div class="input-group has-validation">
                 <input type="text" class="form-control" ng-model="productModel.price" id="price" placeholder="0.00" required>
               </div>
             </div>
 
             <div class="col-md-3 offset-md-3" style="width:15%">
-              <label for="email" class="form-label">Amount</label>
+              <label for="email" class="form-label">Quantidade</label>
               <input type="number" class="form-control" ng-model="productModel.amount" id="amount" placeholder="0">
             </div>
 
             <div class="col-md-3 offset-md-3" style="margin-left:10px; width:15%">
-              <label for="taxes" class="form-label">Taxes</label>
-              <input type="text" class="form-control" ng-model="productModel.taxes" id="address" placeholder="Taxes" required numeric-only>
+              <label for="taxes" class="form-label">Taxas</label>
+              <input type="text" class="form-control" ng-model="productModel.taxes" id="address" placeholder="Taxas" required numeric-only>
             </div>
 
             <div class="col-md-2 offset-md-2" style="margin-left:10px; width:15%">
-              <label for="type" class="form-label">Type</label>
-              <input type="text" class="form-control" ng-model="productModel.type_product" id="type" placeholder="Type">
+              <label for="type" class="form-label">Tipo</label>
+              <input type="text" class="form-control" ng-model="productModel.type_product" id="type" placeholder="Tipo">
             </div>
           </div>
 
           <div class="col-md-2 offset-md-3 " style="margin-left:350px;margin-top: 10px; width:40%">
-              <label for="product" class="form-label">Product Description</label>
-              <input type="text" class="form-control" ng-model="productModel.product" id="product" placeholder="Description" value="" required>
+              <label for="product" class="form-label">Descrição</label>
+              <input type="text" class="form-control" ng-model="productModel.product" id="product" placeholder="Descrição" value="" required>
             </div>
 
           <hr class="my-4">
 
-          <button ng-hide="edit"class="w-10 btn btn-primary btn-lg" ng-click="registerProduct()" type="submit">Save the register</button>
-          <button ng-hide="!edit" class="w-10 btn btn-success btn-lg" ng-click="updateProduct()" type="submit">Update the register</button>
+          <button ng-hide="edit"class="w-10 btn btn-primary btn-lg" ng-click="registerProduct()" type="submit">Salvar</button>
+          <button ng-hide="!edit" class="w-10 btn btn-success btn-lg" ng-click="updateProduct()" type="submit">Atualizar</button>
         </form>
       </div>
     </div>
@@ -113,14 +113,14 @@
           <thead>
           <tr>
             <th class="text-center" scope="col">Cod</th>
-            <th class="text-center" scope="col">Product</th>
-            <th class="text-center" scope="col">Type</th>
-            <th class="text-center" scope="col">Price un.</th>
-            <th class="text-center" scope="col">Total Price</th>
-            <th class="text-center" scope="col">Amount</th>
-            <th class="text-center" scope="col">Taxes</th>
-            <th class="text-center" scope="col">Total Taxes</th>
-            <th class="text-center" scope="col">Action</th>
+            <th class="text-center" scope="col">Produto</th>
+            <th class="text-center" scope="col">Tipo</th>
+            <th class="text-center" scope="col">Preço un.</th>
+            <th class="text-center" scope="col">Preço Total</th>
+            <th class="text-center" scope="col">Quantidade</th>
+            <th class="text-center" scope="col">Taxas</th>
+            <th class="text-center" scope="col">Total Taxas</th>
+            <th class="text-center" scope="col">Ação</th>
           </tr>
         </thead>
         <tbody>
